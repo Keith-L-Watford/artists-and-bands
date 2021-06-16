@@ -2,6 +2,7 @@ var ticketMasterKey = "&apikey=uuD6hzdyqgKtPGThGyiUbWE3EVpVuaAc";
 var tickerMasterURL = "https://app.ticketmaster.com/discovery/v2/events.json?keyword=" + searchedKeyword + ticketMasterKey;
 
 var test = "https://app.ticketmaster.com/discovery/v2/events.json?keyword=jackson&apikey=uuD6hzdyqgKtPGThGyiUbWE3EVpVuaAc"
+var testZipCode = "postalCode=";
 // temporailly defining the searched keyword until its connected to an input in HTML
 var searchedKeyword = "jackson";
 
