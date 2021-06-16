@@ -1,24 +1,36 @@
+
+var userArtist = "";
+var userZipCode = "";
+
 var ticketMasterKey = "&apikey=uuD6hzdyqgKtPGThGyiUbWE3EVpVuaAc";
-var tickerMasterURL = "https://app.ticketmaster.com/discovery/v2/events.json?keyword=" + searchedKeyword + ticketMasterKey;
+var tickerMasterURL = "https://app.ticketmaster.com/discovery/v2/events.json?keyword=" + testKeyword + ticketMasterKey;
 
-var test = "https://app.ticketmaster.com/discovery/v2/events.json?keyword=jackson&apikey=uuD6hzdyqgKtPGThGyiUbWE3EVpVuaAc"
-var testZipCode = "postalCode=";
+// + "&postalCode=" + testZipCode
+
+var testKeyword = "jackson";
+var testZipCode = 19107;
+// test zipcode is Center City, Philadelphia
 // temporailly defining the searched keyword until its connected to an input in HTML
-var searchedKeyword = "jackson";
+var test = "https://app.ticketmaster.com/discovery/v2/events.json?keyword=jackson&apikey=uuD6hzdyqgKtPGThGyiUbWE3EVpVuaAc"
 
-console.log(tickerMasterURL);
+console.log(test);
+
+
 
 // fetch(tickerMasterURL)
-//     .then((res) => res.json()
-//     .then((data) => {
-//         console.log(data);
-//     }))
+//     .then(function (response) {
+//         return response.json();
+//     })
+//     .then(function (data) {
+//             console.log(data)
+//         });
 
 
-fetch(tickerMasterURL)
-    .then(function (response) {
-        return response.json();
-    })
-    .then(function (data) {
-            console.log(data)
-        });
+
+fetch(test)
+.then(function (response) {
+    return response.json();
+})
+.then(function (data) {
+        console.log(data)
+    });
