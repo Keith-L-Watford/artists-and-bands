@@ -28,10 +28,6 @@ fetch(tickerMasterURL)
     .then(function (data) {
             console.log(data)
             console.log(data._embedded.events[0].url);
-
- // // link to artists wikipedia
-        console.log(data._embedded.attractions.externalLinks.wiki.url);
-
         });
 
 
@@ -42,26 +38,26 @@ fetch(test)
 })
 .then(function (data) {
         console.log(data)
-        console.log(data._embedded.events[0].url);
+        // console.log(data._embedded.events[0].url);
 
         // // link to artists wikipedia
-        // console.log(data._embedded.attractions[0].externalLinks.wiki.url);
+        console.log(data._embedded.events[0]._embedded.attractions[0].externalLinks.wiki[0]);
 
         // // link to artists last.fm
-        // console.log(data._embedded.attractions[0].externalLinks.lastfm[0].url);
+        console.log(data._embedded.events[0]._embedded.attractions[0].externalLinks.lastfm[0].url);
 
         // // link to ticket masters artist profile
-        // console.log(data._embedded.attractions[0].url);
+        console.log(data._embedded.events[0]._embedded.attractions[0].url);
 
         // // venue info
         //     // Street Address
-        // console.log(data._embedded.venues[0].address);
+        console.log(data._embedded.events[0]._embedded.venues[0].address);
         //     // City
-        // console.log(data._embedded.venues[0].city.name);
+        console.log(data._embedded.events[0]._embedded.venues[0].city.name);
         //     // State (abreviated - can replace 'stateCode' with 'name' to get the full name of the state.)
-        // console.log(data._embedded.venues[0].state.stateCode);
+        console.log(data._embedded.events[0]._embedded.venues[0].state.stateCode);
         //     // Zip code
-        // console.log(data._embedded.venues[0].postalCode);
+        console.log(data._embedded.events[0]._embedded.venues[0].postalCode);
         //     // Venue website
-        // console.log(data._embedded.venues[0].url);
+        console.log(data._embedded.events[0]._embedded.venues[0].url);
     });
