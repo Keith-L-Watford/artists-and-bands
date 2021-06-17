@@ -47,10 +47,21 @@ function artistSearch(artist, zip) {
                 var eventDate = document.querySelector("#date");
                 eventDate.innerHTML = "Date: " + data._embedded.events[i].dates.start.localDate;
 
+                var theEvent = data._embedded.events[i].name;
+                var theDate = data._embedded.events[i].dates.start.localDate;
+
                 for (var i = 0; i < data._embedded.events.length; i++) {
-                    var infoCard =  document.getElementById("box").appendChild(document.createElement("div"));
-                    infoCard.className += " box";
-                    infoCard.textContent = "Test"
+                    var cardArtist =  document.getElementById("box").appendChild(document.createElement("div"));
+                    // var infoLineCard =
+                    // infoCard.className += " box";
+                    cardArtist.textContent  = "Artist: " + theEvent;
+
+
+                    var cardArtist =  document.getElementById("artist-loop").appendChild(document.createElement("div"));
+                    cardArtist.textContent  = "Artist: " + theEvent;
+
+                    var cardDate = document.getElementById("date-loop").appendChild(document.createElement("div"));
+                    cardDate.textContent  = "Date: " + theDate;
 
                 }
 
