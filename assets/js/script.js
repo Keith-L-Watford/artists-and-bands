@@ -39,13 +39,36 @@ function artistSearch(artist, zip) {
                 console.log(data._embedded.events[i]._embedded.venues[0].city.name);
                 console.log(data._embedded.events[i]._embedded.venues[0].country.name);
                 console.log(data._embedded.events[i]._embedded.venues[0].postalCode);
+                console.log(data._embedded.events[i].dates.start.localDate);
+
+                var eventName = document.querySelector("#artist");
+                eventName.innerHTML = "Artist: " + data._embedded.events[i].name;
+      
+                var eventDate = document.querySelector("#date");
+                eventDate.innerHTML = "Date: " + data._embedded.events[i].dates.start.localDate;
+
+                for (var i = 0; i < data._embedded.events.length; i++) {
+                    var infoCard =  document.getElementById("box").appendChild(document.createElement("div"));
+                    infoCard.className += " box";
+                    infoCard.textContent = "Test"
+
+                }
+
+                
+
             }
 
+         
+         
+
+        
+
+         
 
         });
 
 
-
+        
 
 }
 
