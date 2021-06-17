@@ -11,15 +11,22 @@
 </head>
 
 <body>
+
+    <div class="navbar" roll="navigation">
+        <div class="navbar-brand">Artist and Band <strong>Finder </strong><span class="icon">
+                <i class="fas fa-city"></i></span><span><i class="fas fa-music"></i>
+            </span></div>
+        <div class="navbar-start"></div>
+    </div>
+    </div>
+
     <section class="section">
+
         <div class="container">
 
-            <h1 class="title">
-                Artist and Bands
-            </h1>
-            <p class="subtitle">
-                Live music <strong>locator!</strong>!
-            </p>
+
+
+
 
             <div class="columns">
                 <div class="column">
@@ -43,11 +50,15 @@
                 </div>
 
                 <div class="column">
-
-                    <div class="box">
+                    <div id="box" class="box">
                         <div class="content">
                             <h1>Upcoming Events</h1>
+                            <p id="artist">Artist:</p>
+                            <p id="date">Date:</p>
+                            <p id="venue">Venue:</p>
+                            <p id="price">Ticket Price:</p>
                         </div>
+                        <button class="button is-primary">Hear Music</button>
                     </div>
 
                     <!-- need to dynamically create more divs with class of "box" -->
@@ -64,5 +75,7 @@
         </div>
     </section>
 </body>
+
+<script src="https://kit.fontawesome.com/81cbfceaa1.js" crossorigin="anonymous"></script>
 <script src="assets/js/script.js"></script>
 </html>
