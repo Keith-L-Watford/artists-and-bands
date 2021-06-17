@@ -1,12 +1,17 @@
+var searchButton = document.querySelector(".button");
+var artistInput = document.querySelector("#artist-input");
+var zipInput = document.querySelector("#location-input");
+
+
 
 var userArtist = "";
 var userZipCode = "";
 
 var testRadius = 15;
 var testZipCode = 10001;
-var testKeyword = "alicia key";
+var testKeyword = "alicia keys";
 var ticketMasterKey = "&apikey=uuD6hzdyqgKtPGThGyiUbWE3EVpVuaAc";
-var tickerMasterURL = `https://app.ticketmaster.com/discovery/v2/events.json?keyword=${testKeyword}${ticketMasterKey}`;
+
 
 // "&postalCode= " + testZipCode + "&radius=" + testRadius +
 
@@ -14,17 +19,45 @@ var tickerMasterURL = `https://app.ticketmaster.com/discovery/v2/events.json?key
 // temporailly defining the searched keyword until its connected to an input in HTML
 // var test = "https://app.ticketmaster.com/discovery/v2/events.json?keyword=jackson&apikey=uuD6hzdyqgKtPGThGyiUbWE3EVpVuaAc"
 
+function artistSearch(artist, zip) {
+    var tickerMasterURL = `https://app.ticketmaster.com/discovery/v2/events.json?keyword=${artist}${ticketMasterKey}`;
+    console.log("artistSearch");
+    console.log(artist);
+    console.log(zip);
 
-
-fetch(tickerMasterURL)
+    fetch(tickerMasterURL)
     .then(function (response) {
         return response.json();
     })
     .then(function (data) {
-            console.log(data)
-            // console.log(data._embedded.events[0].url);
-        });
+        console.log(data)
+        // console.log(data._embedded.events[0].url);
+    });
 
+
+
+
+}
+
+
+
+
+// the click calls a function
+// the function gathers the info
+function addArtist(event) {
+    event.preventDefault()
+    console.log("you clicked me");
+    console.log(artistInput.value);
+    console.log(zipInput.value);
+
+    var currentArtist = artistInput.value
+    var currentZip = zipInput.value
+
+    artistSearch(currentArtist, currentZip)
+}
+
+
+searchButton.addEventListener("click", addArtist);
 
 
 // fetch(testWithZip)
@@ -65,4 +98,4 @@ fetch(tickerMasterURL)
 //         // console.log(data._embedded.events[0]._embedded.attractions[0].externalLinks.wiki[0].url);
 //             // link to artists last.fm
 //         // console.log(data._embedded.events[0]._embedded.attractions[0].externalLinks.lastfm[0].url);
-    // });
+// });
