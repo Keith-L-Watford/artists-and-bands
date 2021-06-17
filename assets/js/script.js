@@ -18,30 +18,27 @@ var test = "https://app.ticketmaster.com/discovery/v2/events.json?keyword=jackso
 // console.log(test);
 
 
+// fetch(test)
+//     .then(function (response) {
+//         return response.json();
+//     })
+//     .then(function (data) {
+//             console.log(data)
+//             console.log(data._embedded.events[0].url);
+//         });
 
 
 
 fetch(tickerMasterURL)
-    .then(function (response) {
-        return response.json();
-    })
-    .then(function (data) {
-            console.log(data)
-            console.log(data._embedded.events[0].url);
-        });
-
-
-
-fetch(test)
 .then(function (response) {
     return response.json();
 })
 .then(function (data) {
         console.log(data)
-        // console.log(data._embedded.events[0].url);
+      
 
         // // link to artists wikipedia
-        console.log(data._embedded.events[0]._embedded.attractions[0].externalLinks.wiki[0]);
+        console.log(data._embedded.events[0]._embedded.attractions[0].externalLinks.wiki[0].url);
 
         // // link to artists last.fm
         console.log(data._embedded.events[0]._embedded.attractions[0].externalLinks.lastfm[0].url);
@@ -51,7 +48,7 @@ fetch(test)
 
         // // venue info
         //     // Street Address
-        console.log(data._embedded.events[0]._embedded.venues[0].address);
+        console.log(data._embedded.events[0]._embedded.venues[0].address.line1);
         //     // City
         console.log(data._embedded.events[0]._embedded.venues[0].city.name);
         //     // State (abreviated - can replace 'stateCode' with 'name' to get the full name of the state.)
