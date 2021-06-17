@@ -26,13 +26,23 @@ function artistSearch(artist, zip) {
     console.log(zip);
 
     fetch(tickerMasterURL)
-    .then(function (response) {
-        return response.json();
-    })
-    .then(function (data) {
-        console.log(data)
-        // console.log(data._embedded.events[0].url);
-    });
+        .then(function (response) {
+            return response.json();
+        })
+        .then(function (data) {
+            console.log(data)
+            // console.log(data._embedded.events[0].url);
+
+            for (var i = 0; i < 15; i++) {
+                console.log(data._embedded.events[i].name);
+                console.log(data._embedded.events[i]._embedded.venues[0].address.line1);
+                console.log(data._embedded.events[i]._embedded.venues[0].city.name);
+                console.log(data._embedded.events[i]._embedded.venues[0].country.name);
+                console.log(data._embedded.events[i]._embedded.venues[0].postalCode);
+            }
+
+
+        });
 
 
 
