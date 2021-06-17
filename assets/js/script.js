@@ -39,7 +39,15 @@ function artistSearch(artist, zip) {
                 console.log(data._embedded.events[i]._embedded.venues[0].city.name);
                 console.log(data._embedded.events[i]._embedded.venues[0].country.name);
                 console.log(data._embedded.events[i]._embedded.venues[0].postalCode);
+                console.log(data._embedded.events[i].dates.start.localDate);
             }
+
+
+var name = data._embedded.events[i].name
+name.textcontent
+
+
+
 
 
         });
