@@ -110,7 +110,7 @@ function artistSearch(artist, zip) {
                     pTagPrice.textContent = "Lowest Price: $" + thePrice;
                 } 
             }
-
+        }
         });
 }
  
