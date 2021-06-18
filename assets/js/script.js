@@ -42,8 +42,21 @@ function artistSearch(artist, zip) {
                 console.log(data._embedded.events[i].dates.start.localDate);
 
 
+
+                for (var i = 0; i < data._embedded.events.length; i++) {
+                    var infoCard =  document.getElementById("box").appendChild(document.createElement("ul"));
+                    
+                    infoCard.className += " box";
+                    infoCard.textContent  = "Artist: " + data._embedded.events[i].name;
+                    
+                  
+
+
+                    
+
                 var eventWho = data._embedded.events[i].name;
                 var eventWhen = data._embedded.events[i].dates.start.localDate;
+
 
                 var eventName = document.querySelector("#artist");
                 eventName.innerHTML = "Artist: " + eventWho
@@ -51,6 +64,7 @@ function artistSearch(artist, zip) {
 
                 var eventDate = document.querySelector("#date");
                 eventDate.innerHTML = "Date: " + eventWhen
+
 
        
 
@@ -96,6 +110,7 @@ function artistSearch(artist, zip) {
                     pTagPrice.textContent = "Lowest Price: $" + thePrice;
                 } 
             }
+
         });
 }
  
@@ -121,8 +136,10 @@ function addArtist(event) {
 
 
     artistSearch(currentArtist, currentZip)
-}
+    
+    deezerSearch(currentArtist)
 
+}
 
 searchButton.addEventListener("click", addArtist);
 
@@ -166,3 +183,25 @@ searchButton.addEventListener("click", addArtist);
 //             // link to artists last.fm
 //         // console.log(data._embedded.events[0]._embedded.attractions[0].externalLinks.lastfm[0].url);
 // });
+
+
+function deezerSearch(artist) {
+    
+    var deezerURL = "https://api.deezer.com/search/artist/?q=" + artist + "&index=0&limit=1&output=json";
+    // console.log(artist);
+
+    fetch(deezerURL)
+    .then(function (response) {
+        return response.json();
+    })
+
+    .then (function (data){
+        console.log(data);
+
+    //     var deezer = document.querySelector("#musicLink")
+    //     deezer.innerHTML = "Link to Music: " + data.
+    // })
+
+
+})
+}
