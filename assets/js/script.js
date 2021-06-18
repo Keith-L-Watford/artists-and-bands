@@ -33,7 +33,7 @@ function artistSearch(artist, zip) {
             console.log(data)
             // console.log(data._embedded.events[0].url);
 
-            for (var i = 0; i < 15; i++) {
+            for (var i = 0; i < 10; i++) {
                 console.log(data._embedded.events[i].name);
                 console.log(data._embedded.events[i]._embedded.venues[0].address.line1);
                 console.log(data._embedded.events[i]._embedded.venues[0].city.name);
@@ -41,45 +41,125 @@ function artistSearch(artist, zip) {
                 console.log(data._embedded.events[i]._embedded.venues[0].postalCode);
                 console.log(data._embedded.events[i].dates.start.localDate);
 
+
+                var eventWho = data._embedded.events[i].name;
+                var eventWhen = data._embedded.events[i].dates.start.localDate;
+
                 var eventName = document.querySelector("#artist");
-                eventName.innerHTML = "Artist: " + data._embedded.events[i].name;
-      
+                eventName.innerHTML = "Artist: " + eventWho
+
+
                 var eventDate = document.querySelector("#date");
-                eventDate.innerHTML = "Date: " + data._embedded.events[i].dates.start.localDate;
+                eventDate.innerHTML = "Date: " + eventWhen
 
                 var theEvent = data._embedded.events[i].name;
                 var theDate = data._embedded.events[i].dates.start.localDate;
 
                 for (var i = 0; i < data._embedded.events.length; i++) {
-                    var cardArtist =  document.getElementById("box").appendChild(document.createElement("div"));
-                    // var infoLineCard =
-                    // infoCard.className += " box";
-                    cardArtist.textContent  = "Artist: " + theEvent;
+                    console.log(theEvent);
+                    
+                    var theResultsBox = document.getElementById('search-list');
+
+                    theMiniBox = document.createElement("div")
+                    theResultsBox.append(theMiniBox)
+                    theMiniBox.className += " box"
+
+                    var pTagArtist = document.createElement("p");
+                    theMiniBox.appendChild(pTagArtist);
+                    pTagArtist.textContent = "Artist: " + theEvent;
+
+                    var pTagDate = document.createElement("p");
+                    theMiniBox.appendChild(pTagDate);
+                    pTagDate.textContent = "Date: " + theDate;
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    // var cardArtist = document.getElementById("box").appendChild(document.createElement("div"));
+                    // // var infoLineCard =
+                    // // infoCard.className += " box";
+                    // cardArtist.textContent = "Artist: " + theEvent;
 
 
-                    var cardArtist =  document.getElementById("artist-loop").appendChild(document.createElement("div"));
-                    cardArtist.textContent  = "Artist: " + theEvent;
+                    // var cardArtist = document.getElementById("artist-loop").appendChild(document.createElement("div"));
+                    // cardArtist.textContent = "Artist: " + theEvent;
 
-                    var cardDate = document.getElementById("date-loop").appendChild(document.createElement("div"));
-                    cardDate.textContent  = "Date: " + theDate;
+                    // var cardDate = document.getElementById("date-loop").appendChild(document.createElement("div"));
+                    // cardDate.textContent = "Date: " + theDate;
+
+
+                    // // test stuff (Morning of 6-18-21)
+                    // var theContainer = document.createElement("div")
+                    // //    document.getElementById("container").appendChild(theContainer);
+                    // //    theContainer.className += " container";
+
+                    // //     var pTagArtist = document.createElement("p");
+                    // //     document.getElementsByClassName("container").appendChild(pTagArtist);
+
+
+                    // //     var pTagDate = document.createElement("p");
+                    // //     document.getElementsByClassName("container").appendChild(pTagDate);
+
+
+                    // //    var cardArtist = document.getElementById("artist-loop")
+                    // //    var cardDate  =  document.getElementById("date-loop")
+
+                    // //    cardArtist.appendChild(theEvent)
+                    // //    theContainer.appendChild(cardDate)
+
+                    // //    var theBox = cardArtist.insertAdjacentElement('afterend', cardDate)
+
+
+
+
+                    // var cardArtist = document.getElementById("artist-loop").appendChild(document.createElement("div"));
+                    // var cardDate = document.getElementById("date-loop").insertAdjacentElement('afterend', cardArtist);
+                    // // // var infoLineCard =
+                    // theContainer.className += " box";
+                    // // cardDate.className += " box";
+                    // // cardArtist.textContent  = "Artist: " + theEvent;
+
+                    // cardArtist.textContent = theEvent
+                    // cardDate.textContent = theDate
+
+                    // // cardDate.textContent  = "Date: " + theDate;
+
+
+
+                    // // var cardArtist =  document.getElementById("artist-loop").appendChild(document.createElement("div"));
+                    // // cardArtist.textContent  = "Artist: " + theEvent;
+
+                    // // var cardDate = document.getElementById("date-loop").appendChild(document.createElement("div"));
+                    // // cardDate.textContent  = "Date: " + theDate;
+
+
+
+
+
+
 
                 }
 
-                
+
 
             }
 
-         
-         
 
-        
 
-         
+
+
+
+
 
         });
 
 
-        
+
 
 }
 
