@@ -54,6 +54,14 @@ function artistSearch(artist, zip) {
 
                 var theEvent = data._embedded.events[i].name;
                 var theDate = data._embedded.events[i].dates.start.localDate;
+                var venueAddress = data._embedded.events[i]._embedded.venues[0].address.line1;
+                var venueCity = data._embedded.events[i]._embedded.venues[0].city.name;
+                var venueCountry = data._embedded.events[i]._embedded.venues[0].country.name;
+
+                var theVenue = venueAddress + ", " + venueCity + ", " + venueCountry;
+
+                console.log(theVenue);
+                // var ticketPrice = ; 
 
                 for (var i = 0; i < data._embedded.events.length; i++) {
                     console.log(theEvent);
