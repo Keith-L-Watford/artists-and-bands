@@ -54,21 +54,24 @@ function artistSearch(artist, zip) {
 
                 var theEvent = data._embedded.events[i].name;
                 var theDate = data._embedded.events[i].dates.start.localDate;
+
+                var venueName = data._embedded.events[i]._embedded.venues[0].name;
                 var venueAddress = data._embedded.events[i]._embedded.venues[0].address.line1;
                 var venueCity = data._embedded.events[i]._embedded.venues[0].city.name;
                 var venueCountry = data._embedded.events[i]._embedded.venues[0].country.name;
+                var theVenue = venueName + ", " + venueAddress + ", " + venueCity + ", " + venueCountry;
+                var thePrice = data._embedded.events[i].priceRanges[0].min;
 
-                var theVenue = venueAddress + ", " + venueCity + ", " + venueCountry;
 
                 console.log(theVenue);
                 // var ticketPrice = ; 
 
                 for (var i = 0; i < data._embedded.events.length; i++) {
-                    console.log(theEvent);
-                    
+                    // console.log(theEvent[i]);
+
                     var theResultsBox = document.getElementById('search-list');
 
-                    theMiniBox = document.createElement("div")
+                    var theMiniBox = document.createElement("div")
                     theResultsBox.append(theMiniBox)
                     theMiniBox.className += " box"
 
@@ -79,9 +82,16 @@ function artistSearch(artist, zip) {
                     var pTagDate = document.createElement("p");
                     theMiniBox.appendChild(pTagDate);
                     pTagDate.textContent = "Date: " + theDate;
-                    
-                    
-                    
+
+                    var pTagVenue = document.createElement("p");
+                    theMiniBox.appendChild(pTagVenue);
+                    pTagVenue.textContent = "Where: " + theVenue;
+
+                    var pTagPrice = document.createElement("p");
+                    theMiniBox.appendChild(pTagPrice);
+                    pTagPrice.textContent = "Lowest Price: $" + thePrice;
+
+
 
                 }
             }
