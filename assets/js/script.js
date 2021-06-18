@@ -94,12 +94,12 @@ function artistSearch(artist, zip) {
                     var pTagPrice = document.createElement("p");
                     theMiniBox.appendChild(pTagPrice);
                     pTagPrice.textContent = "Lowest Price: $" + thePrice;
-
-                }
+                } 
             }
         });
 }
-
+ 
+// searchHistory()
 
 // the click calls a function
 // the function gathers the info
@@ -111,6 +111,14 @@ function addArtist(event) {
 
     var currentArtist = artistInput.value
     var currentZip = zipInput.value
+
+    // // I think HERE is where the local storage stuff can happen
+    // var searchedHistory = document.getElementById("history");
+    // var listEl = document.createElement("li");
+    // searchedHistory.appendChild(listEl);
+    // listEl.textContent = artistInput.value;
+
+
 
     artistSearch(currentArtist, currentZip)
 }
