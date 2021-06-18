@@ -33,7 +33,7 @@ function artistSearch(artist, zip) {
             console.log(data)
             // console.log(data._embedded.events[0].url);
 
-            for (var i = 0; i < 15; i++) {
+            for (var i = 0; i < 10; i++) {
                 console.log(data._embedded.events[i].name);
                 console.log(data._embedded.events[i]._embedded.venues[0].address.line1);
                 console.log(data._embedded.events[i]._embedded.venues[0].city.name);
@@ -41,39 +41,65 @@ function artistSearch(artist, zip) {
                 console.log(data._embedded.events[i]._embedded.venues[0].postalCode);
                 console.log(data._embedded.events[i].dates.start.localDate);
 
+
+                var eventWho = data._embedded.events[i].name;
+                var eventWhen = data._embedded.events[i].dates.start.localDate;
+
                 var eventName = document.querySelector("#artist");
-                eventName.innerHTML = "Artist: " + data._embedded.events[i].name;
-      
+                eventName.innerHTML = "Artist: " + eventWho
+
+
                 var eventDate = document.querySelector("#date");
-                eventDate.innerHTML = "Date: " + data._embedded.events[i].dates.start.localDate;
+                eventDate.innerHTML = "Date: " + eventWhen
+
+       
+
+
+                console.log(theVenue);
+                // var ticketPrice = ; 
 
                 for (var i = 0; i < data._embedded.events.length; i++) {
-                    var infoCard =  document.getElementById("box").appendChild(document.createElement("div"));
-                    infoCard.className += " box";
-                    infoCard.textContent = "Test"
+                    // console.log(theEvent[i]);
 
-                }
+                    // Drilling into the fetched data and naming them
+                    var theEvent = data._embedded.events[i].name;
+                    var theDate = data._embedded.events[i].dates.start.localDate;
+    
+                    var venueName = data._embedded.events[i]._embedded.venues[0].name;
+                    var venueAddress = data._embedded.events[i]._embedded.venues[0].address.line1;
+                    var venueCity = data._embedded.events[i]._embedded.venues[0].city.name;
+                    var venueCountry = data._embedded.events[i]._embedded.venues[0].country.name;
+                    var theVenue = venueName + ", " + venueAddress + ", " + venueCity + ", " + venueCountry;
+                    var thePrice = data._embedded.events[i].priceRanges[0].min;
 
-                
+                    // Creating a new container and then creating and appending our info into that container 
+                    var theResultsBox = document.getElementById('search-list');
 
+                    var theMiniBox = document.createElement("div")
+                    theResultsBox.append(theMiniBox)
+                    theMiniBox.className += " box"
+
+                    var pTagArtist = document.createElement("p");
+                    theMiniBox.appendChild(pTagArtist);
+                    pTagArtist.textContent = "Artist: " + theEvent;
+
+                    var pTagDate = document.createElement("p");
+                    theMiniBox.appendChild(pTagDate);
+                    pTagDate.textContent = "Date: " + theDate;
+
+                    var pTagVenue = document.createElement("p");
+                    theMiniBox.appendChild(pTagVenue);
+                    pTagVenue.textContent = "Where: " + theVenue;
+
+                    var pTagPrice = document.createElement("p");
+                    theMiniBox.appendChild(pTagPrice);
+                    pTagPrice.textContent = "Lowest Price: $" + thePrice;
+                } 
             }
-
-         
-         
-
-        
-
-         
-
         });
-
-
-        
-
 }
-
-
-
+ 
+// searchHistory()
 
 // the click calls a function
 // the function gathers the info
@@ -85,6 +111,14 @@ function addArtist(event) {
 
     var currentArtist = artistInput.value
     var currentZip = zipInput.value
+
+    // // I think HERE is where the local storage stuff can happen
+    // var searchedHistory = document.getElementById("history");
+    // var listEl = document.createElement("li");
+    // searchedHistory.appendChild(listEl);
+    // listEl.textContent = artistInput.value;
+
+
 
     artistSearch(currentArtist, currentZip)
 }

@@ -34,7 +34,7 @@
                         <div class="field">
                             <label class="label">Find Artists</label>
                             <div class="control">
-                                <input class="input" type="artist" placeholder="search artists" id="artist-input" >
+                                <input class="input" type="artist" placeholder="search artists" id="artist-input">
                             </div>
                         </div>
 
@@ -49,8 +49,12 @@
                     </form>
                 </div>
 
+        <div class="">
+            <ul id="history"></ul>
+        </div>
+
                 <div class="column">
-                    <div id="box" class="box">
+                    <div class="box">
                         <div class="content">
                             <h1>Upcoming Events</h1>
                             <p id="artist">Artist:</p>
@@ -60,14 +64,20 @@
                         </div>
                         <button class="button is-primary">Hear Music</button>
                     </div>
+
+                    <!-- need to dynamically create more divs with class of "box" -->
+
+                    <div id="box">
+                        <div class="content" id="search-list">
+                        </div>
+                    </div>
                 </div>
             </div>
-
-
         </div>
     </section>
 </body>
 
 <script src="https://kit.fontawesome.com/81cbfceaa1.js" crossorigin="anonymous"></script>
 <script src="assets/js/script.js"></script>
+
 </html>
