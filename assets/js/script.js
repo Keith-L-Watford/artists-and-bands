@@ -48,22 +48,21 @@ function artistSearch(artist, zip) {
                 eventDate.innerHTML = "Date: " + data._embedded.events[i].dates.start.localDate;
 
                 for (var i = 0; i < data._embedded.events.length; i++) {
-                    var infoCard =  document.getElementById("box").appendChild(document.createElement("div"));
+                    var infoCard =  document.getElementById("box").appendChild(document.createElement("ul"));
+                    
                     infoCard.className += " box";
-                    infoCard.textContent = "Test"
+                    infoCard.textContent  = "Artist: " + data._embedded.events[i].name;
+                    
+                  
+
+
+                    
 
                 }
 
                 
 
             }
-
-         
-         
-
-        
-
-         
 
         });
 
@@ -87,8 +86,10 @@ function addArtist(event) {
     var currentZip = zipInput.value
 
     artistSearch(currentArtist, currentZip)
-}
+    
+    deezerSearch(currentArtist)
 
+}
 
 searchButton.addEventListener("click", addArtist);
 
@@ -132,3 +133,25 @@ searchButton.addEventListener("click", addArtist);
 //             // link to artists last.fm
 //         // console.log(data._embedded.events[0]._embedded.attractions[0].externalLinks.lastfm[0].url);
 // });
+
+
+function deezerSearch(artist) {
+    
+    var deezerURL = "https://api.deezer.com/search/artist/?q=" + artist + "&index=0&limit=1&output=json";
+    // console.log(artist);
+
+    fetch(deezerURL)
+    .then(function (response) {
+        return response.json();
+    })
+
+    .then (function (data){
+        console.log(data);
+
+    //     var deezer = document.querySelector("#musicLink")
+    //     deezer.innerHTML = "Link to Music: " + data.
+    // })
+
+
+})
+}
