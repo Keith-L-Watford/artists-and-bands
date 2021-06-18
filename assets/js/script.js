@@ -74,96 +74,11 @@ function artistSearch(artist, zip) {
                     
                     
                     
-                    
-                    
-                    
-                    
-                    
-                    
-                    // var cardArtist = document.getElementById("box").appendChild(document.createElement("div"));
-                    // // var infoLineCard =
-                    // // infoCard.className += " box";
-                    // cardArtist.textContent = "Artist: " + theEvent;
-
-
-                    // var cardArtist = document.getElementById("artist-loop").appendChild(document.createElement("div"));
-                    // cardArtist.textContent = "Artist: " + theEvent;
-
-                    // var cardDate = document.getElementById("date-loop").appendChild(document.createElement("div"));
-                    // cardDate.textContent = "Date: " + theDate;
-
-
-                    // // test stuff (Morning of 6-18-21)
-                    // var theContainer = document.createElement("div")
-                    // //    document.getElementById("container").appendChild(theContainer);
-                    // //    theContainer.className += " container";
-
-                    // //     var pTagArtist = document.createElement("p");
-                    // //     document.getElementsByClassName("container").appendChild(pTagArtist);
-
-
-                    // //     var pTagDate = document.createElement("p");
-                    // //     document.getElementsByClassName("container").appendChild(pTagDate);
-
-
-                    // //    var cardArtist = document.getElementById("artist-loop")
-                    // //    var cardDate  =  document.getElementById("date-loop")
-
-                    // //    cardArtist.appendChild(theEvent)
-                    // //    theContainer.appendChild(cardDate)
-
-                    // //    var theBox = cardArtist.insertAdjacentElement('afterend', cardDate)
-
-
-
-
-                    // var cardArtist = document.getElementById("artist-loop").appendChild(document.createElement("div"));
-                    // var cardDate = document.getElementById("date-loop").insertAdjacentElement('afterend', cardArtist);
-                    // // // var infoLineCard =
-                    // theContainer.className += " box";
-                    // // cardDate.className += " box";
-                    // // cardArtist.textContent  = "Artist: " + theEvent;
-
-                    // cardArtist.textContent = theEvent
-                    // cardDate.textContent = theDate
-
-                    // // cardDate.textContent  = "Date: " + theDate;
-
-
-
-                    // // var cardArtist =  document.getElementById("artist-loop").appendChild(document.createElement("div"));
-                    // // cardArtist.textContent  = "Artist: " + theEvent;
-
-                    // // var cardDate = document.getElementById("date-loop").appendChild(document.createElement("div"));
-                    // // cardDate.textContent  = "Date: " + theDate;
-
-
-
-
-
-
 
                 }
-
-
-
             }
-
-
-
-
-
-
-
-
         });
-
-
-
-
 }
-
-
 
 
 // the click calls a function
