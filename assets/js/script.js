@@ -44,76 +44,75 @@ function artistSearch(artist, zip) {
 
 
                 for (var i = 0; i < data._embedded.events.length; i++) {
-                    var infoCard =  document.getElementById("box").appendChild(document.createElement("ul"));
-                    
+                    var infoCard = document.getElementById("box").appendChild(document.createElement("ul"));
+
                     infoCard.className += " box";
-                    infoCard.textContent  = "Artist: " + data._embedded.events[i].name;
-                    
-                  
+                    infoCard.textContent = "Artist: " + data._embedded.events[i].name;
 
 
-                    
-
-                var eventWho = data._embedded.events[i].name;
-                var eventWhen = data._embedded.events[i].dates.start.localDate;
 
 
-                var eventName = document.querySelector("#artist");
-                eventName.innerHTML = "Artist: " + eventWho
 
 
-                var eventDate = document.querySelector("#date");
-                eventDate.innerHTML = "Date: " + eventWhen
+                    var eventWho = data._embedded.events[i].name;
+                    var eventWhen = data._embedded.events[i].dates.start.localDate;
 
 
-       
+                    var eventName = document.querySelector("#artist");
+                    eventName.innerHTML = "Artist: " + eventWho
 
 
-                console.log(theVenue);
-                // var ticketPrice = ; 
+                    var eventDate = document.querySelector("#date");
+                    eventDate.innerHTML = "Date: " + eventWhen
 
-                for (var i = 0; i < data._embedded.events.length; i++) {
-                    // console.log(theEvent[i]);
 
-                    // Drilling into the fetched data and naming them
-                    var theEvent = data._embedded.events[i].name;
-                    var theDate = data._embedded.events[i].dates.start.localDate;
-    
-                    var venueName = data._embedded.events[i]._embedded.venues[0].name;
-                    var venueAddress = data._embedded.events[i]._embedded.venues[0].address.line1;
-                    var venueCity = data._embedded.events[i]._embedded.venues[0].city.name;
-                    var venueCountry = data._embedded.events[i]._embedded.venues[0].country.name;
-                    var theVenue = venueName + ", " + venueAddress + ", " + venueCity + ", " + venueCountry;
-                    var thePrice = data._embedded.events[i].priceRanges[0].min;
 
-                    // Creating a new container and then creating and appending our info into that container 
-                    var theResultsBox = document.getElementById('search-list');
 
-                    var theMiniBox = document.createElement("div")
-                    theResultsBox.append(theMiniBox)
-                    theMiniBox.className += " box"
 
-                    var pTagArtist = document.createElement("p");
-                    theMiniBox.appendChild(pTagArtist);
-                    pTagArtist.textContent = "Artist: " + theEvent;
+                    console.log(theVenue);
+                    // var ticketPrice = ; 
 
-                    var pTagDate = document.createElement("p");
-                    theMiniBox.appendChild(pTagDate);
-                    pTagDate.textContent = "Date: " + theDate;
+                    for (var i = 0; i < data._embedded.events.length; i++) {
+                        // console.log(theEvent[i]);
 
-                    var pTagVenue = document.createElement("p");
-                    theMiniBox.appendChild(pTagVenue);
-                    pTagVenue.textContent = "Where: " + theVenue;
+                        // Drilling into the fetched data and naming them
+                        var theEvent = data._embedded.events[i].name;
+                        var theDate = data._embedded.events[i].dates.start.localDate;
 
-                    var pTagPrice = document.createElement("p");
-                    theMiniBox.appendChild(pTagPrice);
-                    pTagPrice.textContent = "Lowest Price: $" + thePrice;
-                } 
-            }
+                        var venueName = data._embedded.events[i]._embedded.venues[0].name;
+                        var venueAddress = data._embedded.events[i]._embedded.venues[0].address.line1;
+                        var venueCity = data._embedded.events[i]._embedded.venues[0].city.name;
+                        var venueCountry = data._embedded.events[i]._embedded.venues[0].country.name;
+                        var theVenue = venueName + ", " + venueAddress + ", " + venueCity + ", " + venueCountry;
+                        var thePrice = data._embedded.events[i].priceRanges[0].min;
 
-        });
+                        // Creating a new container and then creating and appending our info into that container 
+                        var theResultsBox = document.getElementById('search-list');
+
+                        var theMiniBox = document.createElement("div")
+                        theResultsBox.append(theMiniBox)
+                        theMiniBox.className += " box"
+
+                        var pTagArtist = document.createElement("p");
+                        theMiniBox.appendChild(pTagArtist);
+                        pTagArtist.textContent = "Artist: " + theEvent;
+
+                        var pTagDate = document.createElement("p");
+                        theMiniBox.appendChild(pTagDate);
+                        pTagDate.textContent = "Date: " + theDate;
+
+                        var pTagVenue = document.createElement("p");
+                        theMiniBox.appendChild(pTagVenue);
+                        pTagVenue.textContent = "Where: " + theVenue;
+
+                        var pTagPrice = document.createElement("p");
+                        theMiniBox.appendChild(pTagPrice);
+                        pTagPrice.textContent = "Lowest Price: $" + thePrice;
+                    };
+                };
+            }});
 }
- 
+
 // searchHistory()
 
 // the click calls a function
@@ -136,7 +135,7 @@ function addArtist(event) {
 
 
     artistSearch(currentArtist, currentZip)
-    
+
     deezerSearch(currentArtist)
 
 }
@@ -186,22 +185,22 @@ searchButton.addEventListener("click", addArtist);
 
 
 function deezerSearch(artist) {
-    
+
     var deezerURL = "https://api.deezer.com/search/artist/?q=" + artist + "&index=0&limit=1&output=json";
     // console.log(artist);
 
     fetch(deezerURL)
-    .then(function (response) {
-        return response.json();
-    })
+        .then(function (response) {
+            return response.json();
+        })
 
-    .then (function (data){
-        console.log(data);
+        .then(function (data) {
+            console.log(data);
 
-    //     var deezer = document.querySelector("#musicLink")
-    //     deezer.innerHTML = "Link to Music: " + data.
-    // })
+            //     var deezer = document.querySelector("#musicLink")
+            //     deezer.innerHTML = "Link to Music: " + data.
+            // })
 
 
-})
+        })
 }
