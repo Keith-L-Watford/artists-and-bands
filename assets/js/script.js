@@ -55,7 +55,8 @@ function artistSearch(artist, zip) {
                     infoCard.classList = "btn-info block";
                     infoCard.setAttribute = ("data-artist", artistSear)
                     infoCard.setAttribute = ("type", "submit");
-                    infoCard.setAttribute = ("id", "artist-" + artistSear)
+                    infoCard.setAttribute += ("id", "artist-" + artistSear)
+                    infoCard.idname
                     // --------------------------------------------------
 
 
@@ -250,29 +251,29 @@ function deezerSearch(artist) {
     var deezerURL = "https://api.deezer.com/search/artist/?q=" + artist + "&index=0&limit=1&output=json";
     // console.log(artist);
 
-    fetch(deezerURL)
-        .then(function (response) {
-            return response.json();
-        })
+    // fetch(deezerURL)
+    //     .then(function (response) {
+    //         return response.json();
+    //     })
 
-        .then(function (data) {
-            console.log(data);
+    //     .then(function (data) {
+    //         console.log(data);
 
-               for (var i = 0; i < 10; i++) {
-                console.log(data.data[0].picture);
-                console.log(data.data[0].tracklist);
+    //            for (var i = 0; i < 10; i++) {
+    //             console.log(data.data[0].picture);
+    //             console.log(data.data[0].tracklist);
                 
 
-                    for (var i = 0; i <data.data[0].picture.length; i++) {
-                        var imagehead = document.getElementById("box").appendChild(document.createElement("img"));
+    //                 for (var i = 0; i <data.data[0].picture.length; i++) {
+    //                     var imagehead = document.getElementById("box").appendChild(document.createElement("img"));
 
-                        imagehead.className += "box is-active";
-                        imagehead.textContent = "<img src=" + value.picture + ">";
-                    }
+    //                     imagehead.className += "box is-active";
+    //                     imagehead.textContent = "<img src=" + value.picture + ">";
+    //                 }
 
              
-                }   
-            }
+    //             }   
+    //         }
 }  
 var deezer = document.querySelector("#musicLink")
                 // deezer.innerHTML = "Link to Music: " + data.
