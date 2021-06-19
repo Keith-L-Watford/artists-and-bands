@@ -44,33 +44,20 @@ function artistSearch(artist, zip) {
 
 
                 for (var i = 0; i < data._embedded.events.length; i++) {
-                    var infoCard = document.getElementById("box").appendChild(document.createElement("ul"));
+                    // // // I dont think we need this anymore - Keith
+                    // var infoCard = document.getElementById("box").appendChild(document.createElement("ul"));
 
-                    infoCard.className += " box";
-                    infoCard.textContent = "Artist: " + data._embedded.events[i].name;
+                    // infoCard.className += " box";
+                    // infoCard.textContent = "Artist: " + data._embedded.events[i].name;
 
+                    // var eventWho = data._embedded.events[i].name;
+                    // var eventWhen = data._embedded.events[i].dates.start.localDate;
 
+                    // var eventName = document.querySelector("#artist");
+                    // eventName.innerHTML = "Artist: " + eventWho
 
-
-
-
-                    var eventWho = data._embedded.events[i].name;
-                    var eventWhen = data._embedded.events[i].dates.start.localDate;
-
-
-                    var eventName = document.querySelector("#artist");
-                    eventName.innerHTML = "Artist: " + eventWho
-
-
-                    var eventDate = document.querySelector("#date");
-                    eventDate.innerHTML = "Date: " + eventWhen
-
-
-
-
-
-                    console.log(theVenue);
-                    // var ticketPrice = ; 
+                    // var eventDate = document.querySelector("#date");
+                    // eventDate.innerHTML = "Date: " + eventWhen
 
                     for (var i = 0; i < data._embedded.events.length; i++) {
                         // console.log(theEvent[i]);
@@ -137,9 +124,11 @@ function addArtist(event) {
 
     artistSearch(currentArtist, currentZip)
 
-    deezerSearch(currentArtist)
+    // deezerSearch(currentArtist)
 
+    // appleSearch(currentArtist)
 }
+
 
 
 searchButton.addEventListener("click", addArtist);
@@ -186,23 +175,63 @@ searchButton.addEventListener("click", addArtist);
 // });
 
 
-function deezerSearch(artist) {
+// function deezerSearch(artist) {
+//     var deezerURL = "https://api.deezer.com/search/artist/?q=" + artist + "&index=0&limit=1&output=json";
+//     // console.log(artist);
+//     fetch(deezerURL)
+//         .then(function (response) {
+//             return response.json();
+//         })
+//         .then(function (data) {
+//             console.log(data);
+//             //     var deezer = document.querySelector("#musicLink")
+//             //     deezer.innerHTML = "Link to Music: " + data.
+//             // })
+//         })
+// }
 
-    var deezerURL = "https://api.deezer.com/search/artist/?q=" + artist + "&index=0&limit=1&output=json";
-    // console.log(artist);
-
-    fetch(deezerURL)
-        .then(function (response) {
-            return response.json();
-        })
-
-        .then(function (data) {
-            console.log(data);
-
-            //     var deezer = document.querySelector("#musicLink")
-            //     deezer.innerHTML = "Link to Music: " + data.
-            // })
+// function appleSearch(artist) {
+//     var appleURL = "https://itunes.apple.com/search?term=" + artist;
+//     // console.log(artist);
+//     fetch(appleURL)
+//         .then(function (response) {
+//             return response.json();
+//         })
+//         .then(function (data) {
+//             console.log(data);
+            
+//         })
+// }
 
 
-        })
+function storeHistory() {
+    // variables to store storage keys for if statements
+    var userSearch = artistInput.value.trim();
+    if (!userSearch) {
+        return;
+    };
+    var previousArtist = JSON.parse(localStorage.getItem("searchedArtists")) || [];
+    previousArtist.push(userSearch);
+    localStorage.setItem("searchedArtists", JSON.stringify(previousArtist));
+    // clear search bar after clicking search button
+    artistInput.value = "";
+    console.log(previousArtist);
+    //     removePrevious()
+    // }
+}
+function loadHistory() {
+    if (localStorage.getItem("searchedArtists")) {
+        var previousArtist = JSON.parse(localStorage.getItem("searchedArtists"));
+        for (let i = 0; i < previousArtist.length; i++) {
+            // createBtn(previousArtist[i]);
+        }
+    }
+    for (let i = 0; i < document.getElementsByClassName("button").length; i++) {
+        document.getElementsByClassName("button")[i].addEventListener('click', function () {
+            var btnClicked = this.getAttibute("data-artist");
+            artistSearch(btnClicked);
+            console.log(btnClicked);
+            // removePrevious()
+        });
+    }
 }
