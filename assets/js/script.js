@@ -141,6 +141,7 @@ function addArtist(event) {
 
 }
 
+
 searchButton.addEventListener("click", addArtist);
 
 
