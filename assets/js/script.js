@@ -128,20 +128,60 @@ function addArtist(event) {
     var currentZip = zipInput.value
 
     // // I think HERE is where the local storage stuff can happen
+    storeHistory();
     // var searchedHistory = document.getElementById("history");
     // var listEl = document.createElement("li");
     // searchedHistory.appendChild(listEl);
     // listEl.textContent = artistInput.value;
 
-
-
     artistSearch(currentArtist, currentZip)
-    
     deezerSearch(currentArtist)
 
 }
 
+
+
+function storeHistory() {
+    // variables to store storage keys for if statements
+    var userSearch = artistInput.value.trim();
+    var artistSear = JSON.parse(localStorage.getItem('searchedArtists'))
+    if (!userSearch) {
+        return;
+    };
+
+    var previousArtist = JSON.parse(localStorage.getItem("searchedArtists")) || [];
+    previousArtist.push(userSearch);
+    localStorage.setItem("searchedArtists", JSON.stringify(previousArtist));
+
+    
+    // clear search bar after clicking search button
+    artistInput.value = "";
+    console.log(previousArtist);
+    // removePrevious()
+}
+
+function loadHistory() {
+    if (localStorage.getItem("searchedArtists")) {
+        var previousArtist = JSON.parse(localStorage.getItem("searchedArtists"));
+        for (let i = 0; i < previousArtist.length; i++) {
+            createBtn(previousArtist[i]);
+            
+        }
+    }
+
+    for (let i = 0; i < document.getElementsByClassName("button").length; i++) {
+        document.getElementsByClassName("button")[i].addEventListener('click',function() {
+            var btnClicked = this.getAttibute("data-artist");
+            artistSearch(btnClicked);
+            console.log(btnClicked);
+            // removePrevious()
+        })
+        
+    }
+}
+
 searchButton.addEventListener("click", addArtist);
+loadHistory();
 
 
 // fetch(testWithZip)
