@@ -258,9 +258,15 @@ function deezerSearch(artist) {
         .then(function (data) {
                 console.log(data);
                 var imagehead = document.createElement('img');
+                imagehead.src = "";
                 imagehead.src = data.data[0].picture;
                 var aliciasHead = document.querySelector("#imagehead");
-                aliciasHead.appendChild(imagehead)
+                aliciasHead.appendChild(imagehead);
+                var artistlink = document.querySelector("#link");
+               artistlink.innerHTML = data.data[0].link;
+               data.data[0].link.href = URL;
+               document.getElementById("#link").href = URL;
+               
                 //     var deezer = document.querySelector("#musicLink")
                 //     deezer.innerHTML = "Link to Music: " + data.
                 // })
