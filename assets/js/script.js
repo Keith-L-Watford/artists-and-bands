@@ -3,6 +3,8 @@ var artistInput = document.querySelector("#artist-input");
 var zipInput = document.querySelector("#location-input");
 
 
+var theResultsBox = document.getElementById('search-list');
+var theMiniBox = document.createElement("div"); 
 
 var userArtist = "";
 var userZipCode = "";
@@ -90,12 +92,12 @@ function artistSearch(artist, zip) {
                         var thePrice = data._embedded.events[i].priceRanges[0].min;
 
                         // Creating a new container and then creating and appending our info into that container 
-                        var theResultsBox = document.getElementById('search-list');
+                        // var theResultsBox = document.getElementById('search-list');
                         theResultsBox.innerHTML = "";
 
-                        var theMiniBox = document.createElement("div")
+                        // var theMiniBox = document.createElement("div")
                         theResultsBox.append(theMiniBox)
-                        theMiniBox.className += " box"
+                        theMiniBox.className += "box"
 
                         var pTagArtist = document.createElement("p");
                         theMiniBox.appendChild(pTagArtist);
@@ -245,38 +247,41 @@ loadHistory();
 //         // console.log(data._embedded.events[0]._embedded.attractions[0].externalLinks.lastfm[0].url);
 // });
 
-
 function deezerSearch(artist) {
-
     var deezerURL = "https://api.deezer.com/search/artist/?q=" + artist + "&index=0&limit=1&output=json";
     // console.log(artist);
+    fetch(deezerURL)
+    .then(function (response) {
+        return response.json();
+    })
+    .then (function (data){
+        console.log(data);
+    //     var deezer = document.querySelector("#musicLink")
+    //     deezer.innerHTML = "Link to Music: " + data.
+    // })
+    // for (var i = 0; i < 2; i++) {
+    //     console.log(data.data[0].picture);
+    //     console.log(data.data[0].tracklist);
+    for (var i = 0; i <data.data[0].picture.length; i++) {
+         var imagehead = document.createElement();
+         theMiniBox.appendChild(imagehead);
+         imagehead.innerHTML = "<img class
+    }
+})
+}
+//     //                 for (var i = 0; i <data.data[0].picture.length; i++) {
+//     //                     var imagehead = document.getElementById("box").appendChild(document.createElement("img"));
 
-    // fetch(deezerURL)
-    //     .then(function (response) {
-    //         return response.json();
-    //     })
-
-    //     .then(function (data) {
-    //         console.log(data);
-
-    //            for (var i = 0; i < 10; i++) {
-    //             console.log(data.data[0].picture);
-    //             console.log(data.data[0].tracklist);
-                
-
-    //                 for (var i = 0; i <data.data[0].picture.length; i++) {
-    //                     var imagehead = document.getElementById("box").appendChild(document.createElement("img"));
-
-    //                     imagehead.className += "box is-active";
-    //                     imagehead.textContent = "<img src=" + value.picture + ">";
-    //                 }
+//     //                     imagehead.className += "box is-active";
+//     //                     imagehead.textContent = "<img src=" + value.picture + ">";
+//     //                 }
 
              
-    //             }   
-    //         }
-}  
-var deezer = document.querySelector("#musicLink")
-                // deezer.innerHTML = "Link to Music: " + data.
+//     //             }   
+//     //         }
+// }  
+// var deezer = document.querySelector("#musicLink")
+//                 // deezer.innerHTML = "Link to Music: " + data.
         
 
 
