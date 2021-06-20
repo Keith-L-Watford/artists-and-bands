@@ -61,7 +61,7 @@ function artistSearch(artist, zip) {
                 eventDate.innerHTML = "Date: " + eventWhen
 
                 console.log(theVenue);
-                
+
                 // var ticketPrice = ; 
                 for (var i = 0; i < data._embedded.events.length; i++) {
                     // console.log(theEvent[i]);
@@ -128,6 +128,7 @@ function addArtist(event) {
     artistSearch(currentArtist, currentZip)
     deezerSearch(currentArtist)
     storeHistory();
+    imagePull(currentArtist);
 
 }
 // ------------------------------------------
@@ -197,6 +198,8 @@ loadHistory();
 
 
 
+
+
 // fetch(testWithZip)
 // .then(function (response) {
 //     return response.json();
@@ -245,12 +248,13 @@ function deezerSearch(artist) {
             return response.json();
         })
         .then(function (data) {
-            console.log(data);
+            // console.log(data);
 
             var imagehead = document.createElement('img');
-            imagehead.src = "";
+            // imagehead.src = "";
             imagehead.src = data.data[0].picture;
             var aliciasHead = document.querySelector("#imagehead");
+
             aliciasHead.appendChild(imagehead)
             // var aliciaLink = document.querySelector("#venue");
 
@@ -266,9 +270,50 @@ function deezerSearch(artist) {
             //     console.log(data.data[0].tracklist);
             // for (var i = 0; i <data.data[0].picture.length; i++) {
 
+            }).catch(function (error) {
+                console.warn(error);
 
         })
 }
+
+function imagePull(artist) {
+    var tmasterData;
+    var deezerData;
+
+    // Call the API
+    fetch(`https://app.ticketmaster.com/discovery/v2/events.json?keyword=${artist}${ticketMasterKey}`)
+        .then(function (response) {
+            return response.json();
+
+        }).then(function (data) {
+            console.log(data);
+            // Store the post data to a variable
+            tmasterData = data;
+
+            // Fetch another API
+            return fetch("https://api.deezer.com/search/artist/?q=" + artist + "&index=0&limit=1&output=json");
+
+        }).then(function (response) {
+          return response.json();
+           
+        }).then(function (userData) {
+            console.log(userData);
+            deezerData = userData;
+
+
+// if deezer
+
+
+
+
+
+
+        }).catch(function (error) {
+            console.warn(error);
+        });
+}
+
+
 //     //                 for (var i = 0; i <data.data[0].picture.length; i++) {
 //     //                     var imagehead = document.getElementById("box").appendChild(document.createElement("img"));
 
