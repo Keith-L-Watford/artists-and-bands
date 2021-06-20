@@ -1,20 +1,46 @@
-# artists-and-bands
+# Artist & Band Finder
 
 ## Project Description
+This project was created to solve the problem of looking up artist/bands to see if they had upcoming tour dates. We utilized the TicketMaster and Deezer APIs to retreive the information. We also used the CSS framework Bulma to aid in design and opted for vanilla JavaScript over jQuery. 
 
-
-
+## Table of Contents
+- [Installation](#installation)
+- [Usage](#usage)
+- [Demo](#demo)
+- [Credits](#credits)
+- [Notes](#notes)
+- [Who](#who)
+- [License](#license)
 
 
 ## Installation
-
+No installs required. Works best in an updated browser.
 
 ## Usage
+Type into the search bar for an artist or band to find out where, when, and the starting price for any upcoming tour dates. Click <a href="https://keith-l-watford.github.io/artists-and-bands/" target="blank">here</a> to see the deployed application or scan the QR code below.<br>
 
+![The QR code for the app](assets/images/Project1QRcode.png)
+
+## Demo
+Click <a href="https://drive.google.com/file/d/1R3YEIV9J72U6dX_SO_gmp7pfkVDzHhZk/view" target="blank">here</a> for a video demonstration of our application. <br>
+Below is a screenshot of the application. <br>
+![Screenshot of the app]()
 
 ## Credits
 Bulma.io
 Google Fonts
+
+## Notes
+Our original idea was that the user could localize their search results by adding a zip code and a radius. However, we were unable to format that query correctly within the TicketMaster API. We've also had some issues with CORS that were still trying to resolve. Sometimes it works and sometime it doesnt and we havent yet been able to pinpoint why that is. 
+
+## Who
+Find us on github! <br>
+<a href="https://github.com/EvMad" target="blank">EvMad</a> <br>
+<a href="https://github.com/mcnultyshane" target="blank">mcnultyshane</a> <br>
+<a href="https://github.com/Keith-L-Watford" target="blank">Keith-L-Watford</a> <br>
+
+
+
 
 ## License
 The MIT License (MIT)
@@ -39,16 +65,4 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 © 2021 GitHub, Inc.
-
-## Badges
-Non-applicable.
-
-## Features
-Non-applicable.
-
-## How to Contribute
-Non-applicable.
-
-## Tests
-Non-applicable.
 
