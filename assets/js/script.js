@@ -12,7 +12,7 @@ var userZipCode = "";
 var testRadius = 15;
 var testZipCode = 10001;
 var testKeyword = "alicia keys";
-var ticketMasterKey = "&apikey=uuD6hzdyqgKtPGThGyiUbWE3EVpVuaAc";
+var ticketMasterKey = "&apikey=26h0U7WteX49z1qSyZZko7MZWL0JtAtD";
 
 
 // "&postalCode= " + testZipCode + "&radius=" + testRadius +
@@ -246,16 +246,16 @@ function deezerSearch(artist) {
     fetch(deezerURL)
         .then(function (response) {
             return response.json();
-        })
-        .then(function (data) {
+        // })
+        // .then(function (data) {
             // console.log(data);
 
-            var imagehead = document.createElement('img');
-            // imagehead.src = "";
-            imagehead.src = data.data[0].picture;
-            var aliciasHead = document.querySelector("#imagehead");
+            // var imagehead = document.createElement('img');
+            // // imagehead.src = "";
+            // imagehead.src = data.data[0].picture;
+            // var aliciasHead = document.querySelector("#imagehead");
 
-            aliciasHead.appendChild(imagehead)
+            // aliciasHead.appendChild(imagehead)
             // var aliciaLink = document.querySelector("#venue");
 
             // aliciaLink.innerHTML = data.data[0].link;
@@ -270,8 +270,8 @@ function deezerSearch(artist) {
             //     console.log(data.data[0].tracklist);
             // for (var i = 0; i <data.data[0].picture.length; i++) {
 
-            }).catch(function (error) {
-                console.warn(error);
+        }).catch(function (error) {
+            console.warn(error);
 
         })
 }
@@ -294,22 +294,43 @@ function imagePull(artist) {
             return fetch("https://api.deezer.com/search/artist/?q=" + artist + "&index=0&limit=1&output=json");
 
         }).then(function (response) {
-          return response.json();
-           
+            return response.json();
+
         }).then(function (userData) {
             console.log(userData);
             deezerData = userData;
 
 
-// if deezer
 
+            // establish variables for image pull
+            // for (var i = 0; i < data._embedded.events.length; i++) {
+                var tmasterName = tmasterData._embedded.events[0].name;
+                var tmasterImage = tmasterData._embedded.events[0].images[0].url;
+                var deezerName = deezerData.data[0].name;
+                var deezerImage = deezerData.data[0].picture;
+                // var deezerLink = deezerData.data[0].link;
 
+                // if deezer artist === ticketmaster artist (true)
+                if (deezerImage) {
+                    // append the deezer image of artist to the html
+                    var deezerHead = document.createElement('img');
+                    deezerHead.src = deezerImage;
+                    var domHead = document.querySelector("#imagehead");
+                    domHead.appendChild(deezerHead);
 
-
-
-
+                } else if (deezerImage = false) {
+                    var tmasterHead = document.createElement('img');
+                    tmasterHead.src = tmasterImage;
+                    domHead.appendChild(tmasterHead);
+                    // if deezer artist !== ticketmaster artist 
+                } else if (deezerName !== tmasterName) {
+                    // clear the image and remove the child
+                    deezerHead.parentNode.removeChild(deezerHead);
+                }
+                return result;
+            // }
         }).catch(function (error) {
-            console.warn(error);
+            console.log(error);
         });
 }
 
