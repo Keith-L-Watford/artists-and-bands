@@ -1,13 +1,14 @@
 # Artist & Band Finder
 
 ## Project Description
-This project was created to solve the problem of looking up artist/bands to see if they had upcoming tour dates. We utilied the TicketMaster and Deezer APIs to retreive are information
+This project was created to solve the problem of looking up artist/bands to see if they had upcoming tour dates. We utilized the TicketMaster and Deezer APIs to retreive the information.
 
-## Table of Contents (Optional)
+## Table of Contents
 - [Installation](#installation)
 - [Usage](#usage)
 - [Credits](#credits)
-- [Notes](#Notes)
+- [Notes](#notes)
+- [Who](#who)
 - [License](#license)
 
 
@@ -15,9 +16,8 @@ This project was created to solve the problem of looking up artist/bands to see 
 No installs required. Works best in an updated browser.
 
 ## Usage
-Type into the search bar an artist or band to find out where, when, and starting price for any upcoming touring dates.
+Type into the search bar an artist or band to find out where, when, and starting price for any upcoming touring dates. Click <a href="https://keith-l-watford.github.io/artists-and-bands/" target="blank">here</a> to see the deployed application or scan the QR code below.<br>
 
-https://keith-l-watford.github.io/artists-and-bands/
 ![The QR code for the link](assets/images/Project1QRcode.png)
 
 ## Credits
@@ -26,6 +26,15 @@ Google Fonts
 
 ## Notes
 Our original idea was that the user could localize their search results by adding a zip code and a radius. However, we were unable to format that query correctly within the TicketMaster API. 
+
+## Who
+Find us on github! <br>
+<a href="https://github.com/EvMad" target="blank">EvMad</a> <br>
+<a href="https://github.com/mcnultyshane" target="blank">mcnultyshane</a> <br>
+<a href="https://github.com/Keith-L-Watford" target="blank">Keith-L-Watford</a> <br>
+
+
+
 
 ## License
 The MIT License (MIT)
