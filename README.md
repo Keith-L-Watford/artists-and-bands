@@ -1,20 +1,31 @@
-# artists-and-bands
+# Artist & Band Finder
 
 ## Project Description
+This project was created to solve the problem of looking up artist/bands to see if they had upcoming tour dates. We utilied the TicketMaster and Deezer APIs to retreive are information
 
-
-
+## Table of Contents (Optional)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Credits](#credits)
+- [Notes](#Notes)
+- [License](#license)
 
 
 ## Installation
-
+No installs required. Works best in an updated browser.
 
 ## Usage
+Type into the search bar an artist or band to find out where, when, and starting price for any upcoming touring dates.
 
+https://keith-l-watford.github.io/artists-and-bands/
+![The QR code for the link](assets/images/Project1QRcode.png)
 
 ## Credits
 Bulma.io
 Google Fonts
+
+## Notes
+Our original idea was that the user could localize their search results by adding a zip code and a radius. However, we were unable to format that query correctly within the TicketMaster API. 
 
 ## License
 The MIT License (MIT)
@@ -39,16 +50,4 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 © 2021 GitHub, Inc.
-
-## Badges
-Non-applicable.
-
-## Features
-Non-applicable.
-
-## How to Contribute
-Non-applicable.
-
-## Tests
-Non-applicable.
 
