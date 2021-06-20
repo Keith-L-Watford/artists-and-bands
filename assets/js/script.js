@@ -3,8 +3,7 @@ var artistInput = document.querySelector("#artist-input");
 var zipInput = document.querySelector("#location-input");
 
 
-var theResultsBox = document.getElementById('search-list');
-var theMiniBox = document.createElement("div");
+
 
 var userArtist = "";
 var userZipCode = "";
@@ -46,19 +45,20 @@ function artistSearch(artist, zip) {
 
 
                 for (var i = 0; i < data._embedded.events.length; i++) {
-                    var infoCard = document.getElementById("box").appendChild(document.createElement("button"));
 
-                    infoCard.className += "box is-active";
-                    infoCard.textContent = "Artist: " + data._embedded.events[i].name;
+                    // -------- button creation -----
+                    // var infoCard = document.getElementById("box").appendChild(document.createElement("button"));
+
+                    // infoCard.className += "box is-active";
+                    // infoCard.textContent = "Artist: " + data._embedded.events[i].name;
 
 
-                    // create buttons for artist searches
-                    var artistSear = JSON.parse(localStorage.getItem('searchedArtists'))
-                    infoCard.classList = "btn-info block";
-                    infoCard.setAttribute = ("data-artist", artistSear)
-                    infoCard.setAttribute = ("type", "submit");
-                    infoCard.setAttribute += ("id", "artist-" + artistSear)
-                    infoCard.idname
+                    // // create buttons for artist searches
+                    // var artistSear = JSON.parse(localStorage.getItem('searchedArtists'))
+                    // infoCard.classList = "btn-info block";
+                    // infoCard.setAttribute = ("data-artist", artistSear)
+                    // infoCard.setAttribute = ("type", "submit");
+                    // infoCard.setAttribute += ("id", "artist-" + artistSear)
                     // --------------------------------------------------
 
 
@@ -92,10 +92,10 @@ function artistSearch(artist, zip) {
                         var thePrice = data._embedded.events[i].priceRanges[0].min;
 
                         // Creating a new container and then creating and appending our info into that container 
-                        // var theResultsBox = document.getElementById('search-list');
+                        var theResultsBox = document.getElementById('search-list');
                         theResultsBox.innerHTML = "";
 
-                        // var theMiniBox = document.createElement("div")
+                        var theMiniBox = document.createElement("div")
                         theResultsBox.append(theMiniBox)
                         theMiniBox.className += "box"
 
@@ -139,9 +139,11 @@ function addArtist(event) {
     // searchedHistory.appendChild(listEl);
     // listEl.textContent = artistInput.value;
 
+
+
     artistSearch(currentArtist, currentZip)
     deezerSearch(currentArtist)
-    storeHistory();
+    storeHistory(currentArtist);
 
 }
 // ------------------------------------------
@@ -156,9 +158,15 @@ function addArtist(event) {
 // -----------------------------------------------
 
 
-function storeHistory() {
-    // variables to store storage keys for if statements
-    var userSearch = artistInput.value.trim();
+// var savedArtists = localStorage.getItem("searchedArtists")
+
+
+
+
+// // -------------
+// // shanes local storage function
+function storeHistory(currentArtist) {
+    var userSearch = currentArtist
 
     if (!userSearch) {
         return;
@@ -167,86 +175,47 @@ function storeHistory() {
     var previousArtist = JSON.parse(localStorage.getItem("searchedArtists")) || [];
     previousArtist.push(userSearch);
     localStorage.setItem("searchedArtists", JSON.stringify(previousArtist));
-
-
-    // clear search bar after clicking search button
-    artistInput.value = "";
-    console.log(previousArtist);
-    //     removePrevious()
-    // }
 }
 
-function loadHistory() {
-    if (localStorage.getItem("searchedArtists")) {
-        var previousArtist = JSON.parse(localStorage.getItem("searchedArtists"));
-        for (let i = 0; i < previousArtist.length; i++) {
-            // createBtn(previousArtist[i]);
 
-        }
-    }
+// function loadHistory() {
+//     var artistHistory = JSON.parse(localStorage.getItem("seachedArtist"));
 
-    for (let i = 0; i < document.getElementsByClassName("button").length; i++) {
-        document.getElementsByClassName("button")[i].addEventListener('click', function () {
-            var btnClicked = this.getAttibute("data-artist");
-            artistSearch(btnClicked);
-            console.log(btnClicked);
-            // removePrevious()
-        });
+//     var artistBtnId = document.getElementById("search-buttons");
+//     var artistBtn = document.createElement("button");
+//     artistBtnId.appendChild(artistBtn)
+//     artistBtn.textContent = artistHistory
 
+//     artistBtn.className += "box is-active";
+// }
+
+function loadHistory(currentArtist) {
+    var loadData = localStorage.getItem("searchedArtists")
+
+    var savedArtists = JSON.parse(loadData)
+
+    for (i = 0; i < localStorage.length; i++) {
+        var btnId = document.getElementById("search-buttons");
+        var btn = document.createElement("button");
+        btnId.appendChild(btn);
+        // var theClasses = document.createAttribute("class") 
+        // theClasses.value = " "
+    
+       btn.textContent = savedArtists + "test";
     }
 }
 
-// remove previous search results
-// var removePrevious = function () {
-//         theResultsBox.innerHTML = "";              
-
-//     } 
 
 
 
-searchButton.addEventListener("click", addArtist);
-loadHistory();
+searchButton.addEventListener("click", addArtist, function (event) {
+    event.preventDefault
+    // storeHistory();
+    loadHistory();
+});
 
 
-// fetch(testWithZip)
-// .then(function (response) {
-//     return response.json();
-// })
-// .then(function (data) {
-//         console.log(data)
-//             var i;
-//             for (i = 0; i < 100; i++) { 
-//                 console.log(data._embedded.events[i].name);
-//                 console.log(data._embedded.events[i]._embedded.venues[0].address.line1);
-//                 console.log(data._embedded.events[i]._embedded.venues[0].city.name);
-//                 console.log(data._embedded.events[i]._embedded.venues[0].state.name);
-//                 console.log(data._embedded.events[i]._embedded.venues[0].postalCode);
-//             }
-//         // // // Artist Info
-//         //     // Aritst/event name
-//         // // console.log(data._embedded.events[0].name);
 
-//         // // link to ticket masters artist profile
-//         // console.log(data._embedded.events[0]._embedded.attractions[0].url);
-
-//         // // // venue info
-//         // //     // Street Address
-//         // console.log(data._embedded.events[0]._embedded.venues[0].address.line1);
-//         // //     // City
-//         // console.log(data._embedded.events[0]._embedded.venues[0].city.name);
-//         // //     // State (abreviated - can replace 'stateCode' with 'name' to get the full name of the state.)
-//         // console.log(data._embedded.events[0]._embedded.venues[0].state.stateCode);
-//         // //     // Zip code
-//         // console.log(data._embedded.events[0]._embedded.venues[0].postalCode);
-//         // //     // Venue website
-//         // console.log(data._embedded.events[0]._embedded.venues[0].url);
-
-//         // Possible external links, - note not all artists/events have external links
-//             // link to artists wikipedia
-//         // console.log(data._embedded.events[0]._embedded.attractions[0].externalLinks.wiki[0].url);
-//             // link to artists last.fm
-//         // console.log(data._embedded.events[0]._embedded.attractions[0].externalLinks.lastfm[0].url);
-// });
 
 function deezerSearch(artist) {
     var deezerURL = "https://api.deezer.com/search/artist/?q=" + artist + "&index=0&limit=1&output=json";
@@ -256,32 +225,29 @@ function deezerSearch(artist) {
             return response.json();
         })
         .then(function (data) {
-                console.log(data);
-                var imagehead = document.createElement('img');
-                imagehead.src = data.data[0].picture;
-                var aliciasHead = document.querySelector("#imagehead");
-                aliciasHead.appendChild(imagehead)
-                //     var deezer = document.querySelector("#musicLink")
-                //     deezer.innerHTML = "Link to Music: " + data.
-                // })
-                // for (var i = 0; i < 2; i++) {
-                //     console.log(data.data[0].picture);
-                //     console.log(data.data[0].tracklist);
-                // for (var i = 0; i <data.data[0].picture.length; i++) {
- 
-
-            })
-        }
-    //     //                 for (var i = 0; i <data.data[0].picture.length; i++) {
-    //     //                     var imagehead = document.getElementById("box").appendChild(document.createElement("img"));
-
-    //     //                     imagehead.className += "box is-active";
-    //     //                     imagehead.textContent = "<img src=" + value.picture + ">";
-    //     //                 }
+            console.log(data);
 
 
-    //     //             }   
-    //     //         }
-    // }  
-    // var deezer = document.querySelector("#musicLink")
-    //                 // deezer.innerHTML = "Link to Music: " + data.
+            var imagehead = document.createElement('img');
+
+
+            if (imagehead.src !== null) {
+                imagehead.src.remove()  
+            } 
+            imagehead.src = data.data[0].picture;
+            
+
+            
+            var aliciasHead = document.querySelector("#imagehead");
+            aliciasHead.appendChild(imagehead)
+            //     var deezer = document.querySelector("#musicLink")
+            //     deezer.innerHTML = "Link to Music: " + data.
+            // })
+            // for (var i = 0; i < 2; i++) {
+            //     console.log(data.data[0].picture);
+            //     console.log(data.data[0].tracklist);
+            // for (var i = 0; i <data.data[0].picture.length; i++) {
+
+
+        })
+}
