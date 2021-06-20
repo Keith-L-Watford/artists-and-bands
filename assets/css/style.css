@@ -1,0 +1,24 @@
+.brand-logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 25px;
+}
+
+body {
+    background: url(../images/audience-backgroundA.jfif) center / cover;
+    background-repeat: no-repeat;
+    /* background-size: 100% 100%; */
+    height: 75rem;
+    font-family: 'Comfortaa', cursive;
+}
+
+html {
+    height: 100%;
+}
+
+.brand{
+    /* font-family: 'Comfortaa', cursive; */
+    font-family: 'Staatliches', cursive;
+}
+
