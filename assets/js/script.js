@@ -54,11 +54,11 @@ function artistSearch(artist, zip) {
                 var eventWho = data._embedded.events[i].name;
                 var eventWhen = data._embedded.events[i].dates.start.localDate;
 
-                var eventName = document.querySelector("#artist");
-                eventName.innerHTML = "Artist: " + eventWho
+                // var eventName = document.querySelector("#artist");
+                // eventName.innerHTML = "Artist: " + eventWho
 
-                var eventDate = document.querySelector("#date");
-                eventDate.innerHTML = "Date: " + eventWhen
+                // var eventDate = document.querySelector("#date");
+                // eventDate.innerHTML = "Date: " + eventWhen
 
                 console.log(theVenue);
 
@@ -77,7 +77,8 @@ function artistSearch(artist, zip) {
                     var theVenue = venueName + ", " + venueAddress + ", " + venueCity + ", " + venueCountry;
                     var thePrice = data._embedded.events[i].priceRanges[0].min;
 
-                    // Creating a new container and then creating and appending our info into that container 
+                
+                   // Creating a new container and then creating and appending our info into that container 
                     var theResultsBox = document.getElementById('search-list');
                     theResultsBox.innerHTML = "";
 
@@ -100,6 +101,14 @@ function artistSearch(artist, zip) {
                     var pTagPrice = document.createElement("p");
                     theMiniBox.appendChild(pTagPrice);
                     pTagPrice.textContent = "Lowest Price: $" + thePrice;
+
+                    
+                    var tmasterLink = document.createElement("a");
+                    var linktext = document.createTextNode("Click here for ticket availablity.");
+                    tmasterLink.appendChild(linktext)
+                    theMiniBox.appendChild(tmasterLink)
+                    tmasterLink.href = data._embedded.events[0].url
+                   
                 }
             }
 
@@ -318,6 +327,8 @@ function imagePull(artist) {
                     // deezerHead.src = deezerImage;
                     var domHead = document.querySelector("#imagehead");
                     domHead.src = deezerImage
+                    var eventName = document.querySelector("#artist");
+                    eventName.innerHTML = "Artist: " + deezerName
                     // domHead.appendChild(deezerHead);
 
                 } else if (deezerImage = false) {
