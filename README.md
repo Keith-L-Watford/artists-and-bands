@@ -23,7 +23,7 @@ Type into the search bar for an artist or band to find out where, when, and the 
 
 ## Demo
 Click <a href="https://drive.google.com/file/d/1R3YEIV9J72U6dX_SO_gmp7pfkVDzHhZk/view" target="blank">here</a> for a video demonstration of our application. <br>
-Below are some screenshots of the application and a gif of the video demo. <br>
+Below are some screenshots of the application and a gif of the video demo. <br> 
 ![Screenshot of the app](assets/images/desktop.png)
 ![Screenshot of the app in Mobile](assets/images/mobile.png)
 ![gif demostration of the app](assets/images/bands.gif)
