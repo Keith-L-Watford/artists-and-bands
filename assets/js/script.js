@@ -130,6 +130,7 @@ function addArtist(event) {
     storeHistory();
     imagePull(currentArtist);
 
+
 }
 // ------------------------------------------
 // function createBtn(artist) {
@@ -313,19 +314,22 @@ function imagePull(artist) {
                 // if deezer artist === ticketmaster artist (true)
                 if (deezerImage) {
                     // append the deezer image of artist to the html
-                    var deezerHead = document.createElement('img');
-                    deezerHead.src = deezerImage;
+                    // var deezerHead = document.createElement('img');
+                    // deezerHead.src = deezerImage;
                     var domHead = document.querySelector("#imagehead");
-                    domHead.appendChild(deezerHead);
+                    domHead.src = deezerImage
+                    // domHead.appendChild(deezerHead);
 
                 } else if (deezerImage = false) {
-                    var tmasterHead = document.createElement('img');
-                    tmasterHead.src = tmasterImage;
-                    domHead.appendChild(tmasterHead);
+                    // var tmasterHead = document.createElement('img');
+                    // tmasterHead.src = tmasterImage;
+                    var domHead = document.querySelector("#imagehead");
+                    domHead.scr = tmasterImage
                     // if deezer artist !== ticketmaster artist 
                 } else if (deezerName !== tmasterName) {
                     // clear the image and remove the child
                     deezerHead.parentNode.removeChild(deezerHead);
+                    tmasterHead.parentNode.removeChild(tmasterHead)
                 }
                 return result;
             // }

@@ -1,6 +1,7 @@
 .brand-logo {
-    text-align: center;
-    
+    display: flex;
+    justify-content: center;
+    align-items: center;
     font-size: 25px;
 }
 
@@ -19,3 +20,4 @@ html {
     /* font-family: 'Comfortaa', cursive; */
     font-family: 'Staatliches', cursive;
 }
+
