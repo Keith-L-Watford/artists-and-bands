@@ -1,25 +1,15 @@
 var searchButton = document.querySelector(".button");
 var artistInput = document.querySelector("#artist-input");
-var zipInput = document.querySelector("#location-input");
+// var zipInput = document.querySelector("#location-input");
 var clearBtn = document.getElementById("clear")
 
-// var theResultsBox = document.getElementById('search-list');
-// var theMiniBox = document.createElement("div");
+
 
 var userArtist = "";
-var userZipCode = "";
+// var userZipCode = "";
 
-var testRadius = 15;
-var testZipCode = 10001;
-var testKeyword = "alicia keys";
 var ticketMasterKey = "&apikey=26h0U7WteX49z1qSyZZko7MZWL0JtAtD";
 
-
-// "&postalCode= " + testZipCode + "&radius=" + testRadius +
-
-// var testWithZip = "https://app.ticketmaster.com/discovery/v2/events.json?keyword=jackson&postalCode=10901&radius=100&unit=&apikey=uuD6hzdyqgKtPGThGyiUbWE3EVpVuaAc"
-// temporailly defining the searched keyword until its connected to an input in HTML
-// var test = "https://app.ticketmaster.com/discovery/v2/events.json?keyword=jackson&apikey=uuD6hzdyqgKtPGThGyiUbWE3EVpVuaAc"
 
 function artistSearch(artist, zip) {
     var tickerMasterURL = `https://app.ticketmaster.com/discovery/v2/events.json?keyword=${artist}${ticketMasterKey}`;
@@ -115,7 +105,6 @@ function artistSearch(artist, zip) {
         });
 }
 
-// searchHistory()
 
 // the click calls a function
 // the function gathers the info
@@ -123,18 +112,12 @@ function addArtist(event) {
     event.preventDefault()
     console.log("you clicked me");
     console.log(artistInput.value);
-    console.log(zipInput.value);
+    // console.log(zipInput.value);
 
     var currentArtist = artistInput.value
-    var currentZip = zipInput.value
+    // var currentZip = zipInput.value
 
-    // // I think HERE is where the local storage stuff can happen
-    // var searchedHistory = document.getElementById("history");
-    // var listEl = document.createElement("li");
-    // searchedHistory.appendChild(listEl);
-    // listEl.textContent = artistInput.value;
-
-    artistSearch(currentArtist, currentZip)
+    artistSearch(currentArtist)
     deezerSearch(currentArtist)
     storeHistory();
     imagePull(currentArtist);
@@ -195,60 +178,9 @@ function loadHistory() {
 }
 
 
-// remove previous search results
-// var removePrevious = function () {
-//         theResultsBox.innerHTML = "";              
-
-//     } 
-
 searchButton.addEventListener("click", addArtist);
 loadHistory();
 
-
-
-
-
-
-
-// fetch(testWithZip)
-// .then(function (response) {
-//     return response.json();
-// })
-// .then(function (data) {
-//         console.log(data)
-//             var i;
-//             for (i = 0; i < 100; i++) { 
-//                 console.log(data._embedded.events[i].name);
-//                 console.log(data._embedded.events[i]._embedded.venues[0].address.line1);
-//                 console.log(data._embedded.events[i]._embedded.venues[0].city.name);
-//                 console.log(data._embedded.events[i]._embedded.venues[0].state.name);
-//                 console.log(data._embedded.events[i]._embedded.venues[0].postalCode);
-//             }
-//         // // // Artist Info
-//         //     // Aritst/event name
-//         // // console.log(data._embedded.events[0].name);
-
-//         // // link to ticket masters artist profile
-//         // console.log(data._embedded.events[0]._embedded.attractions[0].url);
-
-//         // // // venue info
-//         // //     // Street Address
-//         // console.log(data._embedded.events[0]._embedded.venues[0].address.line1);
-//         // //     // City
-//         // console.log(data._embedded.events[0]._embedded.venues[0].city.name);
-//         // //     // State (abreviated - can replace 'stateCode' with 'name' to get the full name of the state.)
-//         // console.log(data._embedded.events[0]._embedded.venues[0].state.stateCode);
-//         // //     // Zip code
-//         // console.log(data._embedded.events[0]._embedded.venues[0].postalCode);
-//         // //     // Venue website
-//         // console.log(data._embedded.events[0]._embedded.venues[0].url);
-
-//         // Possible external links, - note not all artists/events have external links
-//             // link to artists wikipedia
-//         // console.log(data._embedded.events[0]._embedded.attractions[0].externalLinks.wiki[0].url);
-//             // link to artists last.fm
-//         // console.log(data._embedded.events[0]._embedded.attractions[0].externalLinks.lastfm[0].url);
-// });
 
 function deezerSearch(artist) {
     var deezerURL = "https://api.deezer.com/search/artist/?q=" + artist + "&index=0&limit=1&output=json";
@@ -256,30 +188,7 @@ function deezerSearch(artist) {
     fetch(deezerURL)
         .then(function (response) {
             return response.json();
-        // })
-        // .then(function (data) {
-            // console.log(data);
-
-            // var imagehead = document.createElement('img');
-            // // imagehead.src = "";
-            // imagehead.src = data.data[0].picture;
-            // var aliciasHead = document.querySelector("#imagehead");
-
-            // aliciasHead.appendChild(imagehead)
-            // var aliciaLink = document.querySelector("#venue");
-
-            // aliciaLink.innerHTML = data.data[0].link;
-            // data.data[0].link.href = URL;
-            // document.getElementById("#link").href = URL;
-
-            //     var deezer = document.querySelector("#musicLink")
-            //     deezer.innerHTML = "Link to Music: " + data.
-            // })
-            // for (var i = 0; i < 2; i++) {
-            //     console.log(data.data[0].picture);
-            //     console.log(data.data[0].tracklist);
-            // for (var i = 0; i <data.data[0].picture.length; i++) {
-
+       
         }).catch(function (error) {
             console.warn(error);
 
@@ -350,16 +259,3 @@ function imagePull(artist) {
 }
 
 
-//     //                 for (var i = 0; i <data.data[0].picture.length; i++) {
-//     //                     var imagehead = document.getElementById("box").appendChild(document.createElement("img"));
-
-//     //                     imagehead.className += "box is-active";
-//     //                     imagehead.textContent = "<img src=" + value.picture + ">";
-//     //                 }
-
-
-//     //             }   
-//     //         }
-// }  
-// var deezer = document.querySelector("#musicLink")
-//                 // deezer.innerHTML = "Link to Music: " + data.

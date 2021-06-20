@@ -14,12 +14,11 @@
 
 <body>
 
-    <header class="header" >
+    <header class="header">
         <div class="brand-logo text-is-centered">Artist & Band<strong>Finder </strong><span class="icon">
                 <i class="fas fa-city"></i></span><span><i class="fas fa-music"></i>
             </span></div>
         <div class="navbar-start"></div>
-        
     </header>
 
     <section class="section">
@@ -36,54 +35,45 @@
                             </div>
                         </div>
 
-                        <div class="field">
+                        <!-- <div class="field">
                             <label class="label">Location</label>
                             <div class="control">
                                 <input class="input" type="Location" placeholder="Location" id="location-input">
                             </div>
-                        </div>
-
+                        </div> -->
                         <button class="button is-primary">Find Events</button>
                     </form>
                 </div>
 
-
-
-        <div class="">
-            <ul id="history"></ul>
-        </div>
-
-
-                <div class="column">
+                <div class="">
+                    <ul id="history"></ul>
+                </div>
+                <div class="column is-justify-content-center">
                     <div class="box has-background-white">
                         <div class="content">
-                            <h1>Upcoming Events</h1>
-                            <img src="" id="imagehead">
+                            <h1 class="">Spotlight Artist</h1>
+                            <figure class="image is-128x128">
+                                <img class="is-rounded" src="" id="imagehead">
+                              </figure>
+                            
                             <p id="artist"></p>
                             <p id="date"></p>
                             <!-- <p id="venue">Venue:</p>
-                            <p id="price">Ticket Price:</p> --> 
-                            
+                            <p id="price">Ticket Price:</p> -->
                         </div>
-                        <button class="button is-primary" id="clear">Clear</button>
-                    </div>
-
-
-                    <div id="box"></div>
-
-
-                </div>
-            </div>
-
-
-                    <!-- need to dynamically create more divs with class of "box" -->
-
-                    <div id="box">
-                        <div class="content" id="search-list">
-                        </div>
+                        <!-- <button class="button is-primary" id="clear">Clear</button> -->
                     </div>
                 </div>
             </div>
+
+            <!-- need to dynamically create more divs with class of "box" -->
+
+            <div id="box">
+                <div class="content" id="search-list">
+                </div>
+            </div>
+        </div>
+        </div>
         </div>
     </section>
 </body>
